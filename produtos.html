@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produtos — Forma3D | Catálogo de impressão 3D</title>
+<meta name="description" content="Catálogo de produtos personalizados em impressão 3D da Forma3D. Veja preços, fotos e compre pelo WhatsApp.">
+<link rel="stylesheet" href="CSS/produtos.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="logo display"><span class="dot"></span>forma3d</a>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="produtos.html" class="active">Produtos</a>
+        <a href="index.html#contato">Contato</a>
+      </div>
+      <a class="btn btn-accent" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="section-tag">catálogo completo</span>
+      <h1 class="display">Produtos</h1>
+      <p>Confira nossos produtos de impressão 3D — personalize, escolha e chame no WhatsApp.</p>
+
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </span>
+        <input type="search" id="searchInput" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
+        <button class="search-clear" id="searchClear" aria-label="Limpar pesquisa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="filters" id="filters" role="tablist" aria-label="Filtrar por categoria"></div>
+    </div>
+  </section>
+
+  <section class="catalog">
+    <div class="wrap">
+      <p class="results-meta" id="resultsMeta"></p>
+      <div class="grid" id="grid"></div>
+      <div class="empty-state" id="emptyState">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <h3>Nenhum produto encontrado</h3>
+        <p>Tente pesquisar com outras palavras ou remova o filtro de categoria.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalProductName">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-body">
+      <div>
+        <div class="gallery-main" id="galleryMain"></div>
+        <div class="thumbs" id="galleryThumbs"></div>
+      </div>
+      <div>
+        <span class="p-cat" id="modalCat"></span>
+        <h2 class="p-name display" id="modalProductName"></h2>
+        <div class="p-price" id="modalPrice"></div>
+        <p class="p-desc" id="modalDesc"></p>
+        <a class="btn btn-accent p-cta" id="modalWhats" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Z"/></svg>
+          Comprar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="related-title">Você também pode gostar</div>
+    <div class="related-grid" id="relatedGrid"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-logo display">forma3d</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <p class="foot-bottom">© 2026 forma3d. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="JS/produtos.js"></script>
+
+</body>
+</html>
