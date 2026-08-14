@@ -23,15 +23,87 @@ const icons = {
    (mesma estrutura pode alimentar um backend real depois)
 ========================================================= */
 const products = [
-  { id:1, name:"Suporte para controle", price:39.90, category:"Acessórios", icon:"controle", description:"Suporte produzido em impressão 3D, ideal para organizar seu controle de videogame na mesa ou estante. Acabamento fosco e encaixe firme." },
-  { id:2, name:"Vaso geométrico", price:54.90, category:"Decoração", icon:"vaso", description:"Vaso com design geométrico moderno, impresso em PETG translúcido. Perfeito para plantas pequenas ou suculentas." },
-  { id:3, name:"Luminária modular", price:89.90, category:"Decoração", icon:"luminaria", description:"Luminária de mesa com difusor impresso em 3D, montagem modular e luz aconchegante para o ambiente." },
-  { id:4, name:"Suporte para celular", price:32.90, category:"Acessórios", icon:"celular", description:"Suporte compacto para celular, ideal para mesa de trabalho ou cabeceira. Material rígido e resistente." },
-  { id:5, name:"Miniatura personalizada", price:64.90, category:"Decoração", icon:"miniatura", description:"Miniatura impressa em resina com alto nível de detalhe. Personalizamos conforme sua referência." },
-  { id:6, name:"Organizador de mesa", price:47.90, category:"Organizadores", icon:"organizador", description:"Organizador modular para canetas, clipes e acessórios de escritório. Encaixa em qualquer mesa." },
-  { id:7, name:"Porta-chaves de parede", price:29.90, category:"Utilidades", icon:"porta_chaves", description:"Porta-chaves compacto para fixar na parede, com acabamento em camadas finas para maior precisão." },
-  { id:8, name:"Quadro decorativo 3D", price:74.90, category:"Decoração", icon:"quadro", description:"Quadro com relevo impresso em 3D, textura única que faz o design ganhar profundidade na parede." },
-  { id:9, name:"Porta-copos em par", price:24.90, category:"Utilidades", icon:"porta_copo", description:"Par de porta-copos com base emborrachável, resistentes a líquidos e fáceis de limpar." }
+  { 
+    id:1, 
+    name:"Suporte para controle", 
+    price:39.90, 
+    category:"Acessórios", 
+    icon:"controle", 
+    description:"Suporte produzido em impressão 3D, ideal para organizar seu controle de videogame na mesa ou estante. Acabamento fosco e encaixe firme." 
+},
+
+  { 
+    id:2, 
+    name:"Vaso geométrico", 
+    price:54.90, 
+    category:"Decoração", 
+    icon:"vaso", 
+    description:"Vaso com design geométrico moderno, impresso em PETG translúcido. Perfeito para plantas pequenas ou suculentas." 
+},
+
+  { 
+    id:3, 
+    name:"Luminária modular", 
+    price:89.90, 
+    category:"Decoração", 
+    icon:"luminaria", 
+    description:"Luminária de mesa com difusor impresso em 3D, montagem modular e luz aconchegante para o ambiente." 
+},
+
+  { 
+    id:4, 
+    name:"Suporte para celular", 
+    price:32.90, 
+    category:"Acessórios", 
+    icon:"celular", 
+    description:"Suporte compacto para celular, ideal para mesa de trabalho ou cabeceira. Material rígido e resistente." 
+},
+
+  { 
+    id:5, 
+    name:"Miniatura personalizada", 
+    price:64.90, 
+    category:"Decoração", 
+    icon:"miniatura", 
+    description:"Miniatura impressa em resina com alto nível de detalhe. Personalizamos conforme sua referência." 
+},
+
+  { 
+    id:6, 
+    name:"Organizador de mesa", 
+    price:47.90, 
+    category:"Organizadores", 
+    icon:"organizador", 
+    description:"Organizador modular para canetas, clipes e acessórios de escritório. Encaixa em qualquer mesa." 
+},
+
+  { 
+    id:7, 
+    name:"Porta-chaves de parede", 
+    price:29.90, 
+    category:"Utilidades", 
+    icon:"porta_chaves", 
+    description:"Porta-chaves compacto para fixar na parede, com acabamento em camadas finas para maior precisão." 
+},
+
+  { 
+    id:8, 
+    name:"Quadro decorativo 3D", 
+    price:74.90, 
+    category:"Decoração", 
+    icon:"quadro", 
+    description:"Quadro com relevo impresso em 3D, textura única que faz o design ganhar profundidade na parede." 
+},
+
+  { 
+    id:9, 
+    name:"Porta-copos em par", 
+    price:24.90, 
+    category:"Utilidades", 
+    icon:"porta_copo", 
+    description:"Par de porta-copos com base emborrachável, resistentes a líquidos e fáceis de limpar." 
+}
+
 ];
 
 const categories = ["Todos", "Decoração", "Utilidades", "Acessórios", "Organizadores"];
