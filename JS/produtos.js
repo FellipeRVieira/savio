@@ -232,23 +232,43 @@ function openProduct(id){
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
-  history.pushState(null, '', `#produto/${p.id}`);
+
+  // só empilha uma nova entrada no histórico se ainda não estivermos nela
+  // (evita duplicar entrada quando a abertura veio do próprio histórico)
+  if (location.hash !== `#produto/${p.id}`) {
+    history.pushState({ produto: p.id }, '', `#produto/${p.id}`);
+  }
+}
+
+function closeModalUI(){
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 function closeModal(){
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-  history.pushState(null, '', location.pathname);
+  closeModalUI();
+  // se a URL ainda tem o hash do produto, "consome" essa entrada do
+  // histórico voltando, em vez de empilhar uma entrada nova — assim o
+  // botão de voltar do navegador leva para a página anterior de verdade,
+  // e não reabre o produto
+  if (location.hash.match(/#produto\//)) {
+    history.back();
+  }
 }
 
 document.getElementById('modalClose').addEventListener('click', closeModal);
 overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
 
-/* abre produto direto se a URL já vier com #produto/id */
+/* mantém o modal sincronizado com a URL — tanto ao entrar direto com
+   #produto/id quanto ao navegar com os botões voltar/avançar do navegador */
 function checkHash(){
   const match = location.hash.match(/#produto\/(\d+)/);
-  if (match) openProduct(Number(match[1]));
+  if (match) {
+    openProduct(Number(match[1]));
+  } else {
+    closeModalUI();
+  }
 }
 window.addEventListener('hashchange', checkHash);
 
