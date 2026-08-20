@@ -23,87 +23,87 @@ const icons = {
    (mesma estrutura pode alimentar um backend real depois)
 ========================================================= */
 const products = [
-  { 
-    id:1, 
-    name:"Suporte para controle", 
-    price:39.90, 
-    category:"Acessórios", 
-    icon:"controle", 
-    description:"Suporte produzido em impressão 3D, ideal para organizar seu controle de videogame na mesa ou estante. Acabamento fosco e encaixe firme." 
-},
-
-  { 
-    id:2, 
-    name:"Vaso geométrico", 
-    price:54.90, 
-    category:"Decoração", 
-    icon:"vaso", 
-    description:"Vaso com design geométrico moderno, impresso em PETG translúcido. Perfeito para plantas pequenas ou suculentas." 
-},
-
-  { 
-    id:3, 
-    name:"Luminária modular", 
-    price:89.90, 
-    category:"Decoração", 
-    icon:"luminaria", 
-    description:"Luminária de mesa com difusor impresso em 3D, montagem modular e luz aconchegante para o ambiente." 
-},
-
-  { 
-    id:4, 
-    name:"Suporte para celular", 
-    price:32.90, 
-    category:"Acessórios", 
-    icon:"celular", 
-    description:"Suporte compacto para celular, ideal para mesa de trabalho ou cabeceira. Material rígido e resistente." 
-},
-
-  { 
-    id:5, 
-    name:"Miniatura personalizada", 
-    price:64.90, 
-    category:"Decoração", 
-    icon:"miniatura", 
-    description:"Miniatura impressa em resina com alto nível de detalhe. Personalizamos conforme sua referência." 
-},
-
-  { 
-    id:6, 
-    name:"Organizador de mesa", 
-    price:47.90, 
-    category:"Organizadores", 
-    icon:"organizador", 
-    description:"Organizador modular para canetas, clipes e acessórios de escritório. Encaixa em qualquer mesa." 
-},
-
-  { 
-    id:7, 
-    name:"Porta-chaves de parede", 
-    price:29.90, 
-    category:"Utilidades", 
-    icon:"porta_chaves", 
-    description:"Porta-chaves compacto para fixar na parede, com acabamento em camadas finas para maior precisão." 
-},
-
-  { 
-    id:8, 
-    name:"Quadro decorativo 3D", 
-    price:74.90, 
-    category:"Decoração", 
-    icon:"quadro", 
-    description:"Quadro com relevo impresso em 3D, textura única que faz o design ganhar profundidade na parede." 
-},
-
-  { 
-    id:9, 
-    name:"Porta-copos em par", 
-    price:24.90, 
-    category:"Utilidades", 
-    icon:"porta_copo", 
-    description:"Par de porta-copos com base emborrachável, resistentes a líquidos e fáceis de limpar." 
-}
-
+  {
+    id:1,
+    name:"Suporte para controle",
+    price:39.90,
+    category:"Acessórios",
+    icon:"controle",
+    images: [],
+    description:"Suporte produzido em impressão 3D, ideal para organizar seu controle de videogame na mesa ou estante. Acabamento fosco e encaixe firme."
+  },
+  {
+    id:2,
+    name:"Vaso geométrico",
+    price:54.90,
+    category:"Decoração",
+    icon:"vaso",
+    images: [],
+    description:"Vaso com design geométrico moderno, impresso em PETG translúcido. Perfeito para plantas pequenas ou suculentas."
+  },
+  {
+    id:3,
+    name:"Luminária modular",
+    price:89.90,
+    category:"Decoração",
+    icon:"luminaria",
+    images: [],
+    description:"Luminária de mesa com difusor impresso em 3D, montagem modular e luz aconchegante para o ambiente."
+  },
+  {
+    id:4,
+    name:"Suporte para celular",
+    price:32.90,
+    category:"Acessórios",
+    icon:"celular",
+    images: [],
+    description:"Suporte compacto para celular, ideal para mesa de trabalho ou cabeceira. Material rígido e resistente."
+  },
+  {
+    id:5,
+    name:"Miniatura personalizada",
+    price:64.90,
+    category:"Decoração",
+    icon:"miniatura",
+    images: [],
+    description:"Miniatura impressa em resina com alto nível de detalhe. Personalizamos conforme sua referência."
+  },
+  {
+    id:6,
+    name:"Organizador de mesa",
+    price:47.90,
+    category:"Organizadores",
+    icon:"organizador",
+    images: [],
+    description:"Organizador modular para canetas, clipes e acessórios de escritório. Encaixa em qualquer mesa."
+  },
+  {
+    id:7,
+    name:"Porta-chaves de parede",
+    price:29.90,
+    category:"Utilidades",
+    icon:"porta_chaves",
+    images: [],
+    description:"Porta-chaves compacto para fixar na parede, com acabamento em camadas finas para maior precisão."
+  },
+  {
+    id:8,
+    name:"Quadro decorativo 3D",
+    price:74.90,
+    category:"Decoração",
+    icon:"quadro",
+    images: [],
+    description:"Quadro com relevo impresso em 3D, textura única que faz o design ganhar profundidade na parede."
+  },
+  {
+    id:9,
+    name:"Porta-copos em par",
+    price:24.90,
+    category:"Utilidades",
+    icon:"porta_copo",
+    images: [],
+    description:"Par de porta-copos com base emborrachável, resistentes a líquidos e fáceis de limpar."
+  }
 ];
 
 const categories = ["Todos", "Decoração", "Utilidades", "Acessórios", "Organizadores"];
@@ -143,10 +143,22 @@ function getFiltered(){
   });
 }
 
+function getProductImages(p){
+  return Array.isArray(p.images) ? p.images.filter(Boolean) : [];
+}
+
+function productVisual(p, className = ''){
+  const images = getProductImages(p);
+  if (images.length) {
+    return `<img class="${className}" src="${images[0]}" alt="${p.name}" loading="lazy" draggable="false">`;
+  }
+  return icons[p.icon] || '';
+}
+
 function cardHTML(p){
   return `
     <div class="card" data-id="${p.id}" tabindex="0" role="button" aria-label="Ver detalhes de ${p.name}">
-      <div class="card-img">${icons[p.icon]}</div>
+      <div class="card-img">${productVisual(p)}</div>
       <span class="card-cat">${p.category}</span>
       <div class="card-name">${p.name}</div>
       <div class="card-price">R$ ${p.price.toFixed(2).replace('.',',')}</div>
@@ -205,39 +217,179 @@ function openProduct(id){
 
   const galleryMain = document.getElementById('galleryMain');
   const thumbs = document.getElementById('galleryThumbs');
-  galleryMain.innerHTML = icons[p.icon];
-  thumbs.innerHTML = [0,1,2].map(i => `<div class="thumb ${i===0?'active':''}" data-i="${i}">${icons[p.icon]}</div>`).join('');
+  const images = getProductImages(p);
+  const galleryItems = images.length ? images : [null, null, null];
+
+  function renderGalleryImage(src, index = 0){
+    const visual = src
+      ? `<img src="${src}" alt="${p.name} - imagem ${index + 1}" draggable="false">`
+      : `${icons[p.icon] || ''}`;
+
+    galleryMain.innerHTML = `
+      ${visual}
+      <div class="zoom-lens" id="zoomLens" aria-hidden="true"></div>
+      <span class="zoom-hint" id="zoomHint">Passe o mouse para ampliar</span>
+    `;
+
+    setupImageZoom();
+  }
+
+  renderGalleryImage(galleryItems[0], 0);
+
+  thumbs.innerHTML = galleryItems.map((src, i) => `
+    <button class="thumb ${i === 0 ? 'active' : ''}" type="button" data-i="${i}" aria-label="Visualizar imagem ${i + 1}">
+      ${src ? `<img src="${src}" alt="${p.name} - miniatura ${i + 1}" loading="lazy" draggable="false">` : (icons[p.icon] || '')}
+    </button>
+  `).join('');
+
   thumbs.querySelectorAll('.thumb').forEach(t => {
     t.addEventListener('click', () => {
+      const index = Number(t.dataset.i);
       thumbs.querySelectorAll('.thumb').forEach(x => x.classList.remove('active'));
       t.classList.add('active');
-      galleryMain.style.opacity = 0;
-      setTimeout(() => { galleryMain.innerHTML = icons[p.icon]; galleryMain.style.opacity = 1; }, 120);
+      galleryMain.classList.remove('is-zooming');
+      renderGalleryImage(galleryItems[index], index);
     });
   });
+
+  const mobileNote = document.getElementById('mobileZoomNote');
+  if (mobileNote) mobileNote.hidden = !images.length;
 
   const message = `Olá! Tenho interesse no produto ${p.name}`;
   document.getElementById('modalWhats').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   const related = products.filter(x => x.category === p.category && x.id !== p.id).slice(0,3);
   document.getElementById('relatedGrid').innerHTML = related.map(r => `
-    <div class="related-card" data-id="${r.id}">
-      <div class="card-img">${icons[r.icon]}</div>
+    <div class="related-card" data-id="${r.id}" tabindex="0" role="button" aria-label="Ver ${r.name}">
+      <div class="card-img">${productVisual(r)}</div>
       <div class="card-name">${r.name}</div>
       <div class="card-price">R$ ${r.price.toFixed(2).replace('.',',')}</div>
     </div>`).join('');
+
   document.getElementById('relatedGrid').querySelectorAll('.related-card').forEach(c => {
     c.addEventListener('click', () => openProduct(Number(c.dataset.id)));
+    c.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openProduct(Number(c.dataset.id));
+      }
+    });
   });
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  // só empilha uma nova entrada no histórico se ainda não estivermos nela
-  // (evita duplicar entrada quando a abertura veio do próprio histórico)
   if (location.hash !== `#produto/${p.id}`) {
     history.pushState({ produto: p.id }, '', `#produto/${p.id}`);
   }
+}
+
+/* =========================================================
+   ZOOM — estilo marketplace
+   Desktop: lente + painel ampliado.
+   Touch: toque para abrir uma visualização ampliada.
+========================================================= */
+function setupImageZoom(){
+  const galleryMain = document.getElementById('galleryMain');
+  const zoomLens = document.getElementById('zoomLens');
+  const zoomPreview = document.getElementById('zoomPreview');
+  const zoomHint = document.getElementById('zoomHint');
+  const mobileNote = document.getElementById('mobileZoomNote');
+  const image = galleryMain?.querySelector('img');
+
+  if (!galleryMain || !zoomLens || !zoomPreview || !image) {
+    if (zoomPreview) zoomPreview.innerHTML = '';
+    return;
+  }
+
+  const zoom = 2.6;
+  let touchZoomed = false;
+
+  zoomPreview.innerHTML = `<img src="${image.src}" alt="" aria-hidden="true" draggable="false">`;
+  const previewImage = zoomPreview.querySelector('img');
+
+  const updatePreview = (clientX, clientY) => {
+    const rect = galleryMain.getBoundingClientRect();
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+    const y = Math.max(0, Math.min(clientY - rect.top, rect.height));
+    const lensW = zoomLens.offsetWidth;
+    const lensH = zoomLens.offsetHeight;
+    let lensX = x - lensW / 2;
+    let lensY = y - lensH / 2;
+
+    lensX = Math.max(0, Math.min(lensX, rect.width - lensW));
+    lensY = Math.max(0, Math.min(lensY, rect.height - lensH));
+
+    zoomLens.style.left = `${lensX}px`;
+    zoomLens.style.top = `${lensY}px`;
+
+    const px = (lensX + lensW / 2) / rect.width * 100;
+    const py = (lensY + lensH / 2) / rect.height * 100;
+    previewImage.style.transformOrigin = `${px}% ${py}%`;
+    previewImage.style.transform = `scale(${zoom})`;
+  };
+
+  const showZoom = (clientX, clientY) => {
+    galleryMain.classList.add('is-zooming');
+    if (zoomHint) zoomHint.style.opacity = '0';
+    updatePreview(clientX, clientY);
+  };
+
+  const hideZoom = () => {
+    if (!touchZoomed) {
+      galleryMain.classList.remove('is-zooming');
+      previewImage.style.transform = 'scale(1)';
+      previewImage.style.transformOrigin = '50% 50%';
+    }
+  };
+
+  galleryMain.onpointermove = event => {
+    if (event.pointerType === 'mouse' || event.pointerType === 'pen') {
+      showZoom(event.clientX, event.clientY);
+    }
+  };
+
+  galleryMain.onpointerenter = event => {
+    if (event.pointerType === 'mouse' || event.pointerType === 'pen') {
+      showZoom(event.clientX, event.clientY);
+    }
+  };
+
+  galleryMain.onpointerleave = () => {
+    if (!touchZoomed) hideZoom();
+  };
+
+  galleryMain.onclick = event => {
+    if (event.pointerType === 'touch') return;
+  };
+
+  galleryMain.ontouchstart = event => {
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      const touch = event.touches[0];
+      touchZoomed = !touchZoomed;
+      if (touchZoomed) {
+        showZoom(touch.clientX, touch.clientY);
+        if (mobileNote) mobileNote.textContent = 'Toque novamente para fechar o zoom';
+      } else {
+        galleryMain.classList.remove('is-zooming');
+        if (mobileNote) mobileNote.textContent = 'Toque na imagem para ampliar';
+      }
+    }
+  };
+
+  galleryMain.ontouchmove = event => {
+    if (touchZoomed) {
+      const touch = event.touches[0];
+      updatePreview(touch.clientX, touch.clientY);
+      event.preventDefault();
+    }
+  };
+
+  galleryMain.ontouchend = () => {};
+
+  image.addEventListener('load', () => {
+    previewImage.src = image.currentSrc || image.src;
+  }, { once: true });
 }
 
 function closeModalUI(){

@@ -29,7 +29,7 @@
       </div>
       <a class="btn btn-accent" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.1-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Z"/></svg>
-        Falar no WhatsAppaaaa
+        Falar no WhatsApp
       </a>
     </nav>
   </div>
@@ -75,9 +75,14 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
     <div class="modal-body">
-      <div>
-        <div class="gallery-main" id="galleryMain"></div>
-        <div class="thumbs" id="galleryThumbs"></div>
+      <div class="gallery-column">
+        <div class="gallery-main" id="galleryMain" tabindex="0" aria-label="Galeria de imagens do produto">
+          <div class="zoom-lens" id="zoomLens" aria-hidden="true"></div>
+          <span class="zoom-hint" id="zoomHint">Passe o mouse para ampliar</span>
+        </div>
+        <div class="zoom-preview" id="zoomPreview" aria-hidden="true"></div>
+        <div class="mobile-zoom-note" id="mobileZoomNote">Toque na imagem para ampliar</div>
+        <div class="thumbs" id="galleryThumbs" aria-label="Miniaturas do produto"></div>
       </div>
       <div>
         <span class="p-cat" id="modalCat"></span>
